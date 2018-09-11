@@ -76,7 +76,7 @@ npm test
 #### Writing Features
 ```
 Feature: To search typescript in google
-@TypeScriptScenario
+@Smoke
 
   Scenario: Typescript Google Search
     Given I am on google page
