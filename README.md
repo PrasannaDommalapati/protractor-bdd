@@ -131,16 +131,15 @@ Following configuration shows to call specific tags from feature files
 cucumberOpts: {
     compiler: "ts:ts-node/register",
     format: "json:./reports/json/cucumber_report.json",
-    require: ["../../stepdefinitions/*.ts", "../../support/*.ts"],
+    require: ["../../step-definitions/*.ts", "../../support/*.ts"],
     strict: true,
-    tags: "@TypeScriptScenario or @CucumberScenario or @ProtractorScenario",
+    tags: "@Smoke or @Sanity or @Regression or @Wip",
 },
 ```
 #### HTML Reports
 Currently this project has been integrated with [cucumber-html-reporter](https://github.com/gkushang/cucumber-html-reporter), which is generated in the `reports` folder when you run `npm test`.
 They can be customized according to user's specific needs.
 
-![cucumberreporterscreen](https://github.com/PrasannaDommalapati/protractor-bdd/images/cucumberReporter.PNG)
 
 ## Contributions
 For contributors who want to improve this repo by contributing some code, reporting bugs, issues or improving documentation - PR's are highly welcome, please maintain the coding style , folder structure , detailed description of documentation and bugs/issues with examples if possible.

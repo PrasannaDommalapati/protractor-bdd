@@ -37,7 +37,7 @@ export const config: Config = {
         compiler: 'ts:ts-node/register',
         format:   'json:./reports/json/cucumber_report.json',
         require:  [
-            '../../typeScript/stepDefinitions/*.js',
+            '../../typeScript/step-definitions/*.js',
             '../../typeScript/support/*.js',
         ],
         strict:   true,
