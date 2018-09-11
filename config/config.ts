@@ -1,11 +1,18 @@
 import * as path         from 'path';
 import {browser, Config} from 'protractor';
 import {Reporter}        from '../support/reporter';
+const argv            = require('yargs').argv;
+const fs              = require('fs-extra');
+const glob            = require('glob');
+const firstline       = require('firstline');
+
 
 const jsonReports = process.cwd() + '/reports/json';
 
 export const config: Config = {
+    beforeLaunch:beforeLaunch,
 
+    // The address of a running selenium server.
     seleniumAddress: 'http://127.0.0.1:4444/wd/hub',
 
     SELENIUM_PROMISE_MANAGER: false,
@@ -24,6 +31,16 @@ export const config: Config = {
     specs: [
         '../../features/*.feature',
     ],
+
+    // Spec patterns are relative to the location of the spec file. They may
+    // include glob patterns.
+    // suites: {
+    //     homepage: 'tests/e2e/homepage/**/*Spec.js',
+    //     search: ['tests/e2e/contact_search/**/*Spec.js',
+    //              'tests/e2e/venue_search/**/*Spec.js']
+    // },
+
+    // protractor protractor.conf.js --suite homepage,search
 
     onPrepare: () => {
         browser.ignoreSynchronization = true;
@@ -48,3 +65,42 @@ export const config: Config = {
         Reporter.createHTMLReport();
     },
 };
+
+function beforeLaunch() {
+
+    return Promise.all([
+        fs.remove(jsonReports),
+        setActiveFeatures(),
+    ]);
+}
+
+function setActiveFeatures() {
+    console.log('i have been called')
+
+    const path = `${process.cwd()}/../features/**/*.feature`;
+
+    return new Promise(resolve => {
+
+        glob(path, null, (error, features) => {
+
+            Promise
+                .all(features.map(feature => {
+
+                    return firstline(feature)
+                        .then(line => featureIsActive(line) && config.specs.push(feature));
+                }))
+                .then(() => resolve());
+        });
+    });
+}
+
+function featureIsActive(line) {
+
+    const tags = argv.hasOwnProperty('cucumberOpts') &&
+                 argv.cucumberOpts.hasOwnProperty('tags') ? argv.cucumberOpts.tags.toString() : '';
+
+    const wip = !!tags.match(/@wip/);
+
+    return !wip ? !line.match(/@todo/) : !!line.match(/@wip/);
+}
+

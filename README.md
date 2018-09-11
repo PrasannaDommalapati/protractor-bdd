@@ -136,6 +136,11 @@ cucumberOpts: {
     tags: "@Smoke or @Sanity or @Regression or @Wip",
 },
 ```
+
+```
+Use Cucumber tags and profiles with protractor cucumber.conf.js --cucumberOpts.tags @tagName or protractor cucumber.conf.js --cucumberOpts.profile Name. Don't forget to add your tags and profiles under CucumberOpts in your configuration file.
+
+```
 #### HTML Reports
 Currently this project has been integrated with [cucumber-html-reporter](https://github.com/gkushang/cucumber-html-reporter), which is generated in the `reports` folder when you run `npm test`.
 They can be customized according to user's specific needs.
