@@ -9,7 +9,7 @@ const firstline       = require('firstline');
 
 const jsonReports = process.cwd() + '/reports/json';
 
-export const config: Config = {
+export const protractorConfig: Config = {
     beforeLaunch:beforeLaunch,
 
     // The address of a running selenium server.
@@ -87,7 +87,7 @@ function setActiveFeatures() {
                 .all(features.map(feature => {
 
                     return firstline(feature)
-                        .then(line => featureIsActive(line) && config.specs.push(feature));
+                        .then(line => featureIsActive(line) && protractorConfig.specs.push(feature));
                 }))
                 .then(() => resolve());
         });
