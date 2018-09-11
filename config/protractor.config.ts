@@ -9,7 +9,7 @@ const firstline       = require('firstline');
 
 const jsonReports = process.cwd() + '/reports/json';
 
-export const protractorConfig: Config = {
+export const config: Config = {
     beforeLaunch:beforeLaunch,
 
     // The address of a running selenium server.
@@ -58,7 +58,7 @@ export const protractorConfig: Config = {
             '../../typeScript/support/*.js',
         ],
         strict:   true,
-        tags:     '@Smoke or @Sanity or @Regression or @Wip',
+        tags:     '@Smoke or @Sanity or @Regression or @wip',
     },
 
     onComplete: () => {
@@ -75,7 +75,6 @@ function beforeLaunch() {
 }
 
 function setActiveFeatures() {
-    console.log('i have been called')
 
     const path = `${process.cwd()}/../features/**/*.feature`;
 
@@ -87,7 +86,7 @@ function setActiveFeatures() {
                 .all(features.map(feature => {
 
                     return firstline(feature)
-                        .then(line => featureIsActive(line) && protractorConfig.specs.push(feature));
+                        .then(line => featureIsActive(line) && config.specs.push(feature));
                 }))
                 .then(() => resolve());
         });

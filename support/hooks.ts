@@ -1,10 +1,10 @@
 const { BeforeAll, After, AfterAll, Status } = require("cucumber");
 import * as fs              from "fs";
 import { browser }          from "protractor";
-import { protractorConfig } from "../config/protractor.config";
+import { config } from "../config/protractor.config";
 
 BeforeAll({timeout: 100 * 1000}, async () => {
-    await browser.get(protractorConfig.baseUrl);
+    await browser.get(config.baseUrl);
 });
 
 After(async function(scenario) {
