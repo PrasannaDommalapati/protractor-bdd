@@ -58,7 +58,7 @@ export const config: Config = {
             '../../typeScript/support/*.js',
         ],
         strict:   true,
-        tags:     '@Smoke or @Sanity or @Regression or @Wip',
+        tags:     '@Smoke or @Sanity or @Regression or @wip',
     },
 
     onComplete: () => {
@@ -75,7 +75,6 @@ function beforeLaunch() {
 }
 
 function setActiveFeatures() {
-    console.log('i have been called')
 
     const path = `${process.cwd()}/../features/**/*.feature`;
 
