@@ -21,9 +21,27 @@ export const config: Config = {
     baseUrl: 'https://www.google.com',
 
     capabilities: {
+        //chrome headless
         browserName: 'chrome',
+        chromeOptions: {
+            args: [ "--headless", "--disable-gpu", "--window-size=1280,700" ]
+        }
+
+        //fire fox headless
+        // browserName: 'firefox',
+        //
+        // 'moz:firefoxOptions': {
+        //     args: [ "--headless" ]
+        // }
     },
 
+    // to test cross browser
+    // multiCapabilities: [{
+    //     browserName: 'chrome',
+    // },
+    //     {
+    //         browserName: 'firefox',
+    //     }],
     framework:     'custom',
     frameworkPath: require.resolve('protractor-cucumber-framework'),
 
