@@ -47,16 +47,11 @@ jobs:
 
       - run: npm run webdriver-update
 
-      - run: 
-          name: webdriver-start
-          command: npm run webdriver-start
-        
-
       - save_cache:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
         
       # run tests!
-      # - run: npm test
+      - run: npm test
     
