@@ -12,8 +12,7 @@ jobs:
       # specify the version you desire here
       - image: circleci/node:7.10
       - image: selenium/standalone-chrome:latest
-      - run: 
-          background: true
+        background: true
       
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
