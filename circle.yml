@@ -31,8 +31,6 @@ jobs:
 
       - run: npm install
 
-      - run: url -L -o google-chrome.deb https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-
       - run: npm run build
 
       - run: npm run webdriver-update
