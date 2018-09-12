@@ -21,7 +21,7 @@ async function inSearchPage(text) {
 
 function getURL() {
     return Promise.resolve()
-        .then(() => browser.getCurrentUrl())
+        .then(() => browser.getPageSource())
         .then(console.log);
 
 }
