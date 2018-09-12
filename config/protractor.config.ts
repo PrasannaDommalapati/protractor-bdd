@@ -60,7 +60,6 @@ export const config: Config = {
 
     // protractor protractor.conf.js --suite homepage,search
    
-   noGlobals:true,
     ignoreUncaughtExceptions:true,
     chromeOnly: true,
 
