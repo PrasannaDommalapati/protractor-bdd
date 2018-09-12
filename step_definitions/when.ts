@@ -1,15 +1,14 @@
-import {defineSupportCode} from 'cucumber';
-import {protractor}        from 'protractor';
-import {SearchPageObject}  from '../pages/searchPage';
+import {defineSupportCode, When} from 'cucumber';
+import {protractor}              from 'protractor';
+import {SearchPageObject}        from '../pages/searchPage';
 
 /**
  * Created by Prasanna Dommalapati on 11/09/2018.
  */
 const search: SearchPageObject = new SearchPageObject();
 
-defineSupportCode(({When}) => {
-    When(/^I search for "(.*?)"$/, searchFor);
-});
+When(/^I search for "(.*?)"$/, searchFor);
+
 
 function searchFor(text) {
 

@@ -1,6 +1,6 @@
-import {defineSupportCode}  from 'cucumber';
-import {browser}            from 'protractor';
-import { SearchPageObject } from "../pages/searchPage";
+import {Then} from 'cucumber';
+import {browser}                 from 'protractor';
+import { SearchPageObject }      from "../pages/searchPage";
 
 const chai     = require('chai').use(require('chai-as-promised'));
 const expect   = chai.expect;
@@ -9,10 +9,8 @@ const expect   = chai.expect;
  */
 const search: SearchPageObject = new SearchPageObject();
 
-defineSupportCode(({Then}) => {
-    Then(/^I should see page title as "(.*?)"$/,checkPage)
+Then(/^I should see page title as "(.*?)"$/,checkPage)
 
-});
 
 function checkPage(text) {
 
