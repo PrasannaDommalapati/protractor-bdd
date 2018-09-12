@@ -13,7 +13,7 @@ export const config: Config = {
     beforeLaunch,
 
     // The address of a running selenium server.
-    //seleniumAddress: 'http://127.0.0.1:4444/wd/hub',
+    seleniumAddress: 'http://127.0.0.1:4444/wd/hub',
 
     SELENIUM_PROMISE_MANAGER: false,
 
@@ -59,10 +59,11 @@ export const config: Config = {
     // },
 
     // protractor protractor.conf.js --suite homepage,search
-    noGlobals:true,
+   
+   noGlobals:true,
     ignoreUncaughtExceptions:true,
     chromeOnly: true,
-    directConnect: true,
+
     onPrepare: () => {
         //only when testing a non angular apps
         browser. waitForAngularEnabled(false)
