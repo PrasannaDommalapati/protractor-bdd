@@ -33,19 +33,9 @@ jobs:
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
 
-      - run:
-          name:  Install the latest firefox
-          command: sudo apt-get remove firefox-mozilla-build 
-          command: sudo sh -c "echo 'deb http://ftp.hr.debian.org/debian sid main' >> /etc/apt/sources.list" 
-          command: sudo apt-get update
-          command: sudo apt-get remove binutils
-          command: sudo apt-get update
-
       - run: npm install
 
       - run: npm run build
-
-      - run: npm run webdriver-update
 
       - save_cache:
           paths:
