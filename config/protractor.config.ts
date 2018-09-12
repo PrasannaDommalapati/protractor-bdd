@@ -24,7 +24,7 @@ export const config: Config = {
         //chrome headless
         browserName: 'chrome',
         chromeOptions: {
-            // args: [ "--headless", "--disable-gpu", "--window-size=1280,700" ]
+            args: [ "--headless", "--disable-gpu", "--window-size=1280,700" ]
         }
 
         //fire fox headless
@@ -66,9 +66,7 @@ export const config: Config = {
     onPrepare: () => {
         //only when testing a non angular apps
         browser. waitForAngularEnabled(false)
-        browser.manage()
-               .window()
-               .maximize();
+        browser.manage().window().maximize();
         Reporter.createDirectory(jsonReports);
     },
 
