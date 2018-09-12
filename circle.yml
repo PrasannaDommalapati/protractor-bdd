@@ -32,14 +32,12 @@ jobs:
           - v1-dependencies-
 
       - run:
-
           name:  Install the latest firefox
-
-          command: sudo apt-get remove firefox-mozilla-build &&
-          sudo sh -c "echo 'deb http://ftp.hr.debian.org/debian sid main' >> /etc/apt/sources.list" &&
-          sudo apt-get update &&
-          sudo apt-get remove binutils
-          sudo apt-get install -t sid firefox && firefox --version
+          command: sudo apt-get remove firefox-mozilla-build 
+          command: sudo sh -c "echo 'deb http://ftp.hr.debian.org/debian sid main' >> /etc/apt/sources.list" 
+          command: sudo apt-get update
+          command: sudo apt-get remove binutils
+          command: sudo apt-get install -t sid firefox && firefox --version
 
       - run: npm install
 
