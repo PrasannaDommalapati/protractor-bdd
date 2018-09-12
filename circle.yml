@@ -48,13 +48,13 @@ jobs:
       - run: 
           name: webdriver-start
           command: npm run webdriver-start
-          #background: true
+          background: true
 
       - save_cache:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
-    steps:   
+        
       # run tests!
       - run: npm test
     
