@@ -35,7 +35,9 @@ jobs:
 
       - run: npm run webdriver-update
 
-      - run: npm run webdriver-start:
+      - run: 
+          name: webdriver-start
+          command: npm run webdriver-start
           background: true
 
       - save_cache:
