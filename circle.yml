@@ -35,7 +35,6 @@ jobs:
       - run: yarn run webdriver-update
 
       - run: yarn run webdriver-start
-        background: true
 
       - save_cache:
           paths:
@@ -44,4 +43,3 @@ jobs:
         
       # run tests!
       - run: yarn test
- 
