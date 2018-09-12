@@ -10,7 +10,7 @@ const firstline       = require('firstline');
 const jsonReports = process.cwd() + '/reports/json';
 
 export const config: Config = {
-    beforeLaunch:beforeLaunch,
+    beforeLaunch,
 
     // The address of a running selenium server.
     seleniumAddress: 'http://127.0.0.1:4444/wd/hub',
@@ -59,6 +59,8 @@ export const config: Config = {
     // },
 
     // protractor protractor.conf.js --suite homepage,search
+    noGlobals:true,
+    ignoreUncaughtExceptions:true,
 
     onPrepare: () => {
         browser.ignoreSynchronization = true;
@@ -72,8 +74,10 @@ export const config: Config = {
         compiler: 'ts:ts-node/register',
         format:   'json:./reports/json/cucumber_report.json',
         require:  [
-            '../../typeScript/step-definitions/*.js',
-            '../../typeScript/support/*.js',
+            `${process.cwd()}/typeScript/step-definitions/*.js`,
+            `${process.cwd()}/typeScript/support/*.js`,
+
+
         ],
         strict:   true,
         tags:     '@Smoke or @Sanity or @Regression or @wip',
