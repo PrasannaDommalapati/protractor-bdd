@@ -1,4 +1,4 @@
-import * as path         from 'path';
+// import * as path         from 'path';
 import {browser, Config} from 'protractor';
 import {Reporter}        from '../support/reporter';
 const argv            = require('yargs').argv;
@@ -18,7 +18,7 @@ export const config: Config = {
     SELENIUM_PROMISE_MANAGER: false,
 
     //change this to your app url
-    baseUrl: 'https://www.google.com',
+    baseUrl: 'https://www.google.co.uk',
 
     capabilities: {
         //chrome headless
@@ -63,7 +63,8 @@ export const config: Config = {
     ignoreUncaughtExceptions:true,
 
     onPrepare: () => {
-        browser.ignoreSynchronization = true;
+        //only when testing a non angular apps
+        browser. waitForAngularEnabled(false)
         browser.manage()
                .window()
                .maximize();
@@ -74,8 +75,8 @@ export const config: Config = {
         compiler: 'ts:ts-node/register',
         format:   'json:./reports/json/cucumber_report.json',
         require:  [
-            `${process.cwd()}/typeScript/step-definitions/*.js`,
-            `${process.cwd()}/typeScript/support/*.js`,
+            `${process.cwd()}/dist/step_definitions/*.js`,
+            `${process.cwd()}/dist/support/*.js`,
 
 
         ],
