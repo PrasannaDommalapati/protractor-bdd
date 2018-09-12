@@ -61,8 +61,8 @@ export const config: Config = {
     // protractor protractor.conf.js --suite homepage,search
     noGlobals:true,
     ignoreUncaughtExceptions:true,
-    directConnect:true,
-
+    chromeOnly: true,
+    directConnect: true,.
     onPrepare: () => {
         //only when testing a non angular apps
         browser. waitForAngularEnabled(false)
