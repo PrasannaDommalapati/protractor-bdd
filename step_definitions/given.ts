@@ -11,17 +11,9 @@ const search: SearchPageObject = new SearchPageObject();
 
 Given(/^I am on "(.*?)" search page$/, inSearchPage);
 
-async function inSearchPage(text) {
+function inSearchPage(text) {
 
     let actual = (text === 'google') ? 'Google' : text.concat(' - Google Search');
-    await getURL();
 
     return expect(browser.getTitle()).to.eventually.equal(actual);
-}
-
-function getURL() {
-    return Promise.resolve()
-        .then(() => browser.getPageSource())
-        .then(console.log);
-
 }
