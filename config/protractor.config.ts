@@ -62,7 +62,7 @@ export const config: Config = {
     noGlobals:true,
     ignoreUncaughtExceptions:true,
     chromeOnly: true,
-    directConnect: true,.
+    directConnect: true,
     onPrepare: () => {
         //only when testing a non angular apps
         browser. waitForAngularEnabled(false)
