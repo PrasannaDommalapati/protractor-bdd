@@ -1,24 +1,50 @@
+# Javascript Node CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-javascript/ for more details
+#
+version: 2
 machine:
   node:
     version: 7.5
-  environment:
-    # Fix issue with selenium-server in containers.
-    # See http://github.com/SeleniumHQ/docker-selenium/issues/87
-    DBUS_SESSION_BUS_ADDRESS: /dev/null
+jobs:
+  build:
+    docker:
+      # specify the version you desire here
+      - image: circleci/node:7.10
+      - image: selenium/standalone-chrome:latest
+        background: true
+      
+      # Specify service dependencies here if necessary
+      # CircleCI maintains a library of pre-built images
+      # documented at https://circleci.com/docs/2.0/circleci-images/
+      # - image: circleci/mongo:3.4.4
+    environment:
+        JVM_OPTS: -Xmx3200m
 
-dependencies:
-  override:
-    - yarn
-  post:
-  # install latest google chrome
-    - curl -L -o google-chrome.deb https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-    - sudo dpkg -i google-chrome.deb
-    - sleep 3
-    - yarn run build
-    - yarn run webdriver-update
-    - yarn run webdriver-start:
-          background: true
-test:
-  override:
-    - yarn test
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "package.json" }}
+          # fallback to using the latest cache if no exact match is found
+          - v1-dependencies-
+
+      - run: npm install
+
+      - run: npm run build
+
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+        
+      # run tests!
+      - run: npm test
+
+      - store_test_results:
+                path: reports/html
     

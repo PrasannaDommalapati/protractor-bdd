@@ -1,12 +1,11 @@
 Feature: To search keywords in google
 
-  @wip
+  @Smoke
   Scenario Outline: Searching on google
 
     Given I am on "<search>" search page
-    When I type "<search keyword>"
-    Then I click on search button
-    Then I clear the search text
+    When  I search for "<search keyword>"
+    Then  I should see page title as "<search keyword>"
 
     Examples:
       | search     | search keyword |
