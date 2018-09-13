@@ -10,6 +10,6 @@ Feature: To search keywords in google
     Examples:
       | search     | search keyword |
       | google     | cucumber       |
-      | cucumber   | protractor1     |
-      | protractor | typescript1     |
+      | cucumber   | protractor     |
+      | protractor | typescript     |
   

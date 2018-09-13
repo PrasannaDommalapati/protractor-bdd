@@ -1,4 +1,4 @@
-import {$, by, element, ElementFinder} from 'protractor';
+import {$, ElementFinder} from 'protractor';
 
 export class SearchPageObject {
     public searchTextBox: ElementFinder;
