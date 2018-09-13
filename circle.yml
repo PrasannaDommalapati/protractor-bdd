@@ -44,9 +44,9 @@ jobs:
       - run: npm test
 
       - store_artifacts:
-                path: reports/html
-                destination: tr1
+                path: reports
+                destination: html
 
       - store_test_results:
-                path: reports/html
+                path: reports
     
