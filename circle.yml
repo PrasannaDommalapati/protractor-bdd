@@ -45,7 +45,7 @@ jobs:
 
       - store_artifacts:
                 path: reports
-                destination: html
+                destination: reports
 
       - store_test_results:
                 path: reports
