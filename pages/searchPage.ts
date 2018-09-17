@@ -10,4 +10,5 @@ export class SearchPageObject {
         this.searchButton  = $('input[value=\'Google Search\']');
         this.logo          = $('div#logocont');
     }
+
 }
