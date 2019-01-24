@@ -10,11 +10,19 @@ const expect   = chai.expect;
 const search: SearchPageObject = new SearchPageObject();
 
 Then(/^I should see page title as "(.*?)"$/,checkPage)
+Then(/^I should see the url contains "(.*?)"$/,urlContains)
 
 
 function checkPage(text) {
 
-    let actual = (text === 'google') ? 'Google' : text.concat(' - Google Search');
+    let expectedTitle = (text === 'google') ? 'Google' : text.concat(' - Google Search');
 
-    return expect(browser.getTitle()).to.eventually.equal(actual);
+    return expect(browser.getTitle()).to.eventually.equal(expectedTitle);
+}
+
+function urlContains(expectedUrl) {
+
+    return Promise.resolve()
+        .then(() =>browser.getCurrentUrl())
+        .then(url =>expect(url).contain(expectedUrl));
 }

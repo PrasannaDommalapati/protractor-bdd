@@ -12,4 +12,3 @@ Feature: To search keywords in google
       | google     | cucumber       |
       | cucumber   | protractor     |
       | protractor | typescript     |
-  

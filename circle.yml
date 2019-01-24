@@ -12,8 +12,6 @@ jobs:
       # specify the version you desire here
       - image: circleci/node:7.10
       - image: selenium/standalone-chrome:latest
-        background: true
-      
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
       # documented at https://circleci.com/docs/2.0/circleci-images/
@@ -45,6 +43,10 @@ jobs:
       # run tests!
       - run: npm test
 
+      - store_artifacts:
+                path: reports
+                destination: reports
+
       - store_test_results:
-                path: reports/html
+                path: reports
     

@@ -24,10 +24,10 @@ export const config: Config = {
         //chrome headless
         browserName: 'chrome',
         chromeOptions: {
-            args: [ "--headless", "--disable-gpu", "--window-size=1280,700" ]
+           // args: [ "--headless", "--disable-gpu", "--window-size=1280,700" ]
         }
 
-        //fire fox headless
+        //firefox headless
         // browserName: 'firefox',
         //
         // 'moz:firefoxOptions': {
