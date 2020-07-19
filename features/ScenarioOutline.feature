@@ -1,6 +1,6 @@
 Feature: To search keywords in google
 
-  @Smoke
+  @wip
   Scenario Outline: Searching on google
 
     Given I am on "<search>" search page
